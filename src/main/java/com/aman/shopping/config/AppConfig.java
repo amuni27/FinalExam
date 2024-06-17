@@ -19,49 +19,45 @@ public class AppConfig {
 
     @Bean
     public ModelMapper modelMapper() {
-//        return new ModelMapper();
-        ModelMapper modelMapper = new ModelMapper();
+        return new ModelMapper();
+//        ModelMapper modelMapper = new ModelMapper();
+//
+//        modelMapper.addMappings(
+//                new PropertyMap<OrderRequestDto, Order>() {
+//
+//                    @Override
+//                    protected void configure() {
+//                        map()
+//                                .getCustomer()
+//                                .setName(source.getCustomer().getName());
+//                        map()
+//                                .getProducts()
+//                                .add(new Product(source.getProducts().getName(), source.getProducts().getPrice(),null));
+//
+//                    }
+//                }
+//        );
 
-        modelMapper.addMappings(
-                new PropertyMap<OrderRequestDto, Order>() {
-
-                    @Override
-                    protected void configure() {
-                        map()
-                                .getCustomer()
-                                .setName(source.getCustomer().getName());
-                        map()
-                                .getProducts()
-                                .stream().forEach(order ->
-                                        source.getProducts().add(
-                                                new ProductRequestDto(order.getName(), order.getPrice(), null)
-                                        )
-                                );
-
-                    }
-                }
-        );
-
-        modelMapper.addMappings(
-                new PropertyMap<Order, OrderResponseDto>() {
-
-                    @Override
-                    protected void configure() {
-                        map()
-                                .getCustomer()
-                                .setName(source.getCustomer().getName());
-                        map()
-                                .getProducts()
-                                .stream().forEach(order ->
-                                        source.getProducts().add(
-                                                new Product(order.getName(), order.getPrice(), null)
-                                        )
-                                );
-                    }
-                }
-        );
-
-        return modelMapper;
+//        modelMapper.addMappings(
+//                new PropertyMap<Order, OrderResponseDto>() {
+//
+//                    @Override
+//                    protected void configure() {
+//                        map()
+//                                .getCustomer()
+//                                .setName(source.getCustomer().getName());
+//                        map()
+//                                .getProducts()
+//                                .stream().forEach(order ->
+//                                        source.getProducts().add(
+//                                                new Product(order.getName(), order.getPrice(), null)
+//                                        )
+//                                );
+//                    }
+//                }
+//        );
+//
+//        return modelMapper;
 
     }
 }
