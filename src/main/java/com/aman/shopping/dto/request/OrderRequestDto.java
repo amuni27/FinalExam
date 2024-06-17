@@ -17,5 +17,5 @@ import java.util.Set;
 public class OrderRequestDto {
     private LocalDate orderDate;
     private CustomerRequestDto customer;
-    private ProductRequestDto products;
+    private Set<ProductRequestDto> products = new HashSet<>();
 }
